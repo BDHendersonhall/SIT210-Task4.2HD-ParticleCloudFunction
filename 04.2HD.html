@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Photon REST API Tutorial</title>
+        <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous">
+        </script>
+    </head>
+    <body>
+        <h1>Particle Cloud Function Task 4.2HD</h1>
+
+        <h2>Toggle LEDs</h2>
+    	<br>
+    	<input type="radio" name="arg" value="red" onClick="turnLEDOn('red');">  Red
+    	<br>
+	<br>
+    	<input type="radio" name="arg" value="green" onClick="turnLEDOn('green');">  Green
+    	<br>
+	<br>
+    	<input type="radio" name="arg" value="blue" onClick="turnLEDOn('blue');">  Blue
+    	<br>
+	<br>
+
+        <hr />
+	<button id="LED_Off" onclick="turnLEDsOff();">Turn all LEDs off</button>
+
+        <script type="text/javascript">
+
+            var deviceID    = "e00fce682a3375f7ee733e18";
+            var accessToken = "0a26dc3ec681f1ffc38556b9bcc969bde05b55e1";
+
+            var func2call1 = "led";
+	    var func2call2 = "led_off";
+
+            function turnLEDOn(led_colour) {
+                var requestURL = "https://api.particle.io/v1/devices/" + deviceID + "/" + func2call1 + "/";
+                $.post( requestURL, { params: led_colour, access_token: accessToken });
+            }
+
+            function turnLEDsOff() {
+                var requestURL = "https://api.particle.io/v1/devices/" + deviceID + "/" + func2call2 + "/";
+                $.post( requestURL, { params: "off", access_token: accessToken });
+            }
+
+        </script>
+    </body>
+</html>
