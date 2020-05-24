@@ -43,6 +43,7 @@
             function turnLEDsOff() {
                 var requestURL = "https://api.particle.io/v1/devices/" + deviceID + "/" + func2call2 + "/";
                 $.post( requestURL, { params: "off", access_token: accessToken });
+		$('input[name=arg]').prop('checked',false);
             }
 
         </script>
